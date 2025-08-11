@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReadingSN - Sua Biblioteca Digital</title>
+    <meta name="description" content="ReadingSN - Organize suas leituras e anotações em um ambiente digital inspirado nas grandes bibliotecas">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <h1 class="logo">ReadingSN</h1>
+                    <span class="tagline">Biblioteca Digital</span>
+                </div>
+                
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="nav-item">
+                        <a href="#inicio" class="nav-link active" data-section="inicio">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#anotacoes" class="nav-link" data-section="anotacoes">Anotações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#sobre" class="nav-link" data-section="sobre">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contato" class="nav-link" data-section="contato">Contato</a>
+                    </li>
+                </ul>
+                
+                <div class="nav-toggle" id="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Início Section -->
+        <section id="inicio" class="section section-active">
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h2 class="hero-title">Bem-vindo ao ReadingSN</h2>
+                        <p class="hero-subtitle">Sua biblioteca digital pessoal onde conhecimento e organização se encontram</p>
+                        <p class="hero-description">
+                            Organize suas leituras, crie anotações detalhadas e mantenha todo seu conhecimento em um só lugar. Inspirado na eficiência e no design das bibliotecas modernas.
+                        </p>
+                        <div class="hero-buttons">
+                            <button class="btn btn-primary" onclick="showSection('anotacoes')">
+                                Começar a Anotar
+                            </button>
+                            <button class="btn btn-secondary" onclick="showSection('sobre')">
+                                Saiba Mais
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="images/confira-5-dicas-de-como-montar-uma-biblioteca-em-casa-1024x683.jpg" alt="Interior de biblioteca elegante" class="hero-img">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="container">
+                    <h3 class="features-title">Funcionalidades Principais</h3>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">📝</div>
+                            <h4 class="feature-title">Anotações Inteligentes</h4>
+                            <p class="feature-description">
+                                Crie e organize suas anotações com um editor intuitivo e funcional
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📄</div>
+                            <h4 class="feature-title">Export PDF</h4>
+                            <p class="feature-description">
+                                Baixe suas anotações em formato PDF para compartilhar ou imprimir
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📱</div>
+                            <h4 class="feature-title">Design Responsivo</h4>
+                            <p class="feature-description">
+                                Acesse suas anotações em qualquer dispositivo, desktop ou mobile
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🎨</div>
+                            <h4 class="feature-title">Interface Elegante</h4>
+                            <p class="feature-description">
+                                Design inspirado nas bibliotecas clássicas com toque moderno
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Anotações Section -->
+        <section id="anotacoes" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Suas Anotações</h2>
+                    <p class="section-subtitle">Crie, edite e organize suas anotações de forma intuitiva</p>
+                </div>
+                
+                <div class="notes-container">
+                    <div class="notes-sidebar">
+                        <div class="notes-header">
+                            <h3>Minhas Anotações</h3>
+                            <button class="btn btn-small btn-primary" id="new-note-btn">
+                                + Nova Anotação
+                            </button>
+                        </div>
+                        <div class="notes-list" id="notes-list">
+                            <!-- Lista de anotações será preenchida via JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="notes-editor">
+                        <div class="editor-header">
+                            <input type="text" id="note-title" class="note-title-input" placeholder="Título da anotação...">
+                            <div class="editor-actions">
+                                <button class="btn btn-small btn-secondary" id="save-note-btn">
+                                    Salvar
+                                </button>
+                                <button class="btn btn-small btn-accent" id="download-pdf-btn">
+                                    Baixar PDF
+                                </button>
+                                <button class="btn btn-small btn-danger" id="delete-note-btn">
+                                    Excluir
+                                </button>
+                            </div>
+                        </div>
+                        <textarea id="note-content" class="note-editor" placeholder="Comece a escrever suas anotações aqui..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre Section -->
+        <section id="sobre" class="section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2 class="section-title">Sobre o ReadingSN</h2>
+                        <p class="about-description">
+                            O ReadingSN nasceu da paixão pela leitura e pela necessidade de organizar conhecimento 
+                            de forma elegante e eficiente. Inspirado nas grandes bibliotecas históricas, nosso 
+                            objetivo é criar um ambiente digital que combine a tradição do estudo com a 
+                            praticidade da tecnologia moderna.
+                        </p>
+                        <p class="about-description">
+                            Seja você um estudante, pesquisador, escritor ou simplesmente alguém que ama 
+                            organizar suas ideias, o ReadingSN oferece as ferramentas necessárias para 
+                            transformar suas anotações em conhecimento estruturado.
+                        </p>
+                        
+                        <div class="about-features">
+                            <h3>Por que escolher o ReadingSN?</h3>
+                            <ul class="about-list">
+                                <li>Interface intuitiva e elegante</li>
+                                <li>Funcionalidade offline completa</li>
+                                <li>Export em PDF de alta qualidade</li>
+                                <li>Design responsivo para todos os dispositivos</li>
+                                <li>Armazenamento local seguro</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <img src="images/44280984-pilha-do-livros-em-uma-castanho-fundo-conceito-para-mundo-livro-dia-foto.jpg" alt="Livros antigos" class="about-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato Section -->
+        <section id="contato" class="section">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h2 class="section-title">Entre em Contato</h2>
+                        <p class="contact-description">
+                            Tem alguma dúvida, sugestão ou feedback? Adoraríamos ouvir de você!
+                        </p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">📧</div>
+                                <div class="contact-text">
+                                    <h4>Email</h4>
+                                    <p>contato@readingsn.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">💬</div>
+                                <div class="contact-text">
+                                    <h4>Suporte</h4>
+                                    <p>suporte@readingsn.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">🌐</div>
+                                <div class="contact-text">
+                                    <h4>Website</h4>
+                                    <p>www.readingsn.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <form id="contact-form" class="form">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Nome</label>
+                                <input type="text" id="name" name="name" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject" class="form-label">Assunto</label>
+                                <input type="text" id="subject" name="subject" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message" class="form-label">Mensagem</label>
+                                <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">
+                                Enviar Mensagem
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3 class="footer-logo">ReadingSN</h3>
+                    <p class="footer-tagline">Sua biblioteca digital pessoal</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4 class="footer-title">Navegação</h4>
+                        <ul class="footer-list">
+                            <li><a href="#inicio" onclick="showSection('inicio')">Início</a></li>
+                            <li><a href="#anotacoes" onclick="showSection('anotacoes')">Anotações</a></li>
+                            <li><a href="#sobre" onclick="showSection('sobre')">Sobre</a></li>
+                            <li><a href="#contato" onclick="showSection('contato')">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-title">Recursos</h4>
+                        <ul class="footer-list">
+                            <li><a href="#anotacoes" onclick="showSection('anotacoes')">Editor de Anotações</a></li>
+                            <li><a href="#anotacoes" onclick="showSection('anotacoes')">Export PDF</a></li>
+                            <li><a href="#sobre" onclick="showSection('sobre')">Sobre o Projeto</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ReadingSN. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Confirmação Personalizado -->
+    <div id="custom-modal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 9V13M12 17H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3 class="modal-title" id="modal-title">Confirmar Ação</h3>
+            </div>
+            <div class="modal-body">
+                <p class="modal-message" id="modal-message">Tem certeza que deseja realizar esta ação?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-secondary" id="modal-cancel">Cancelar</button>
+                <button class="modal-btn modal-btn-primary" id="modal-confirm">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+
