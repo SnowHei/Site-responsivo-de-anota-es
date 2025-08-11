@@ -36,24 +36,6 @@ readingsn/
 └── README.md           # Este arquivo
 ```
 
-## Como Usar
-
-### 1. Instalação
-- Baixe todos os arquivos do projeto
-- Mantenha a estrutura de pastas intacta
-- Abra o arquivo `index.html` em qualquer navegador moderno
-
-### 2. Funcionalidades das Anotações
-- **Nova Anotação**: Clique em "+ Nova Anotação"
-- **Editar**: Clique em qualquer anotação da lista para editá-la
-- **Salvar**: As anotações são salvas automaticamente
-- **Download PDF**: Clique em "Baixar PDF" para exportar
-- **Excluir**: Use o botão "Excluir" para remover anotações
-
-### 3. Atalhos de Teclado
-- `Ctrl/Cmd + S`: Salvar anotação atual
-- `Ctrl/Cmd + N`: Criar nova anotação
-
 ## Tecnologias Utilizadas
 
 - **HTML5**: Estrutura semântica e acessível
@@ -91,27 +73,6 @@ readingsn/
 - Auto-save com debounce
 - Geração de PDF client-side
 
-## Personalização
-
-### Cores
-As cores podem ser facilmente alteradas no arquivo `css/style.css` nas variáveis CSS:
-
-```css
-:root {
-    --primary-color: #2C1810;    /* Marrom escuro */
-    --secondary-color: #8B4513;  /* Marrom médio */
-    --accent-color: #D4AF37;     /* Dourado */
-    --background-color: #F5F5DC; /* Bege claro */
-}
-```
-
-### Fontes
-Para alterar as fontes, modifique as importações no `index.html` e as variáveis no CSS:
-
-```css
---font-serif: 'Crimson Text', Georgia, serif;
---font-sans: 'Inter', Arial, sans-serif;
-```
 
 ## Segurança e Privacidade
 
@@ -122,8 +83,7 @@ Para alterar as fontes, modifique as importações no `index.html` e as variáve
 ## Suporte
 
 Para dúvidas ou sugestões sobre o ReadingSN:
-- Email: contato@readingsn.com
-- Suporte: suporte@readingsn.com
+- Email: hglmareira@gmail.com
 
 ## Licença
 
